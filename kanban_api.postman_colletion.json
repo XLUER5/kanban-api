@@ -1,0 +1,374 @@
+{
+    "info": {
+      "_postman_id": "a25e7f9c-8b1a-4d89-9c58-5e83bf9f3d2d",
+      "name": "Kanban API",
+      "description": "API para gestionar tableros y tareas Kanban",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Boards",
+        "item": [
+          {
+            "name": "Create Board",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"name\": \"Proyecto Web\",\n    \"description\": \"Desarrollo de aplicación web\",\n    \"columns\": [\"Por hacer\", \"En progreso\", \"En revisión\", \"Finalizado\"]\n}"
+              },
+              "url": {
+                "raw": "http://localhost:8000/boards",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8000",
+                "path": [
+                  "boards"
+                ]
+              },
+              "description": "Crear un nuevo tablero Kanban"
+            },
+            "response": []
+          },
+          {
+            "name": "List All Boards",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/boards",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8000",
+                "path": [
+                  "boards"
+                ]
+              },
+              "description": "Obtener todos los tableros"
+            },
+            "response": []
+          },
+          {
+            "name": "Get Board by ID",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/boards/{{board_id}}",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8000",
+                "path": [
+                  "boards",
+                  "{{board_id}}"
+                ]
+              },
+              "description": "Obtener un tablero por su ID"
+            },
+            "response": []
+          },
+          {
+            "name": "Update Board",
+            "request": {
+              "method": "PUT",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"name\": \"Proyecto Web Actualizado\",\n    \"description\": \"Desarrollo de aplicación web moderna\",\n    \"columns\": [\"Por hacer\", \"En progreso\", \"QA\", \"Finalizado\"]\n}"
+              },
+              "url": {
+                "raw": "http://localhost:8000/boards/{{board_id}}",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8000",
+                "path": [
+                  "boards",
+                  "{{board_id}}"
+                ]
+              },
+              "description": "Actualizar un tablero existente"
+            },
+            "response": []
+          },
+          {
+            "name": "Delete Board",
+            "request": {
+              "method": "DELETE",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/boards/{{board_id}}",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8000",
+                "path": [
+                  "boards",
+                  "{{board_id}}"
+                ]
+              },
+              "description": "Eliminar un tablero y todas sus tareas asociadas"
+            },
+            "response": []
+          }
+        ],
+        "description": "Operaciones relacionadas con los tableros Kanban"
+      },
+      {
+        "name": "Tasks",
+        "item": [
+          {
+            "name": "Create Task",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"board_id\": \"{{board_id}}\",\n    \"title\": \"Implementar API REST\",\n    \"description\": \"Crear endpoints para gestión de usuarios\",\n    \"status\": \"Por hacer\",\n    \"priority\": \"High\",\n    \"assignee\": \"Juan Pérez\",\n    \"tags\": [\"backend\", \"api\"],\n    \"due_date\": \"2023-12-15T00:00:00\"\n}"
+              },
+              "url": {
+                "raw": "http://localhost:8000/tasks",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8000",
+                "path": [
+                  "tasks"
+                ]
+              },
+              "description": "Crear una nueva tarea"
+            },
+            "response": []
+          },
+          {
+            "name": "List All Tasks",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/tasks",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8000",
+                "path": [
+                  "tasks"
+                ]
+              },
+              "description": "Obtener todas las tareas"
+            },
+            "response": []
+          },
+          {
+            "name": "List Tasks with Filters",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/tasks?board_id={{board_id}}&status=Por hacer&priority=High",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8000",
+                "path": [
+                  "tasks"
+                ],
+                "query": [
+                  {
+                    "key": "board_id",
+                    "value": "{{board_id}}"
+                  },
+                  {
+                    "key": "status",
+                    "value": "Por hacer"
+                  },
+                  {
+                    "key": "priority",
+                    "value": "High"
+                  }
+                ]
+              },
+              "description": "Listar tareas con filtros"
+            },
+            "response": []
+          },
+          {
+            "name": "Get Task by ID",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/tasks/{{task_id}}",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8000",
+                "path": [
+                  "tasks",
+                  "{{task_id}}"
+                ]
+              },
+              "description": "Obtener una tarea por su ID"
+            },
+            "response": []
+          },
+          {
+            "name": "Update Task",
+            "request": {
+              "method": "PUT",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"title\": \"Implementar API REST v2\",\n    \"status\": \"En progreso\",\n    \"priority\": \"Medium\"\n}"
+              },
+              "url": {
+                "raw": "http://localhost:8000/tasks/{{task_id}}",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8000",
+                "path": [
+                  "tasks",
+                  "{{task_id}}"
+                ]
+              },
+              "description": "Actualizar una tarea existente"
+            },
+            "response": []
+          },
+          {
+            "name": "Delete Task",
+            "request": {
+              "method": "DELETE",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/tasks/{{task_id}}",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8000",
+                "path": [
+                  "tasks",
+                  "{{task_id}}"
+                ]
+              },
+              "description": "Eliminar una tarea"
+            },
+            "response": []
+          },
+          {
+            "name": "List Tasks by Board ID",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8000/tasks/board/{{board_id}}",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8000",
+                "path": [
+                  "tasks",
+                  "board",
+                  "{{board_id}}"
+                ]
+              },
+              "description": "Listar todas las tareas de un tablero específico"
+            },
+            "response": []
+          }
+        ],
+        "description": "Operaciones relacionadas con las tareas Kanban"
+      },
+      {
+        "name": "Root",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8000/",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8000",
+            "path": [
+              ""
+            ]
+          },
+          "description": "Obtener información general de la API"
+        },
+        "response": []
+      }
+    ],
+    "event": [
+      {
+        "listen": "prerequest",
+        "script": {
+          "type": "text/javascript",
+          "exec": [
+            ""
+          ]
+        }
+      },
+      {
+        "listen": "test",
+        "script": {
+          "type": "text/javascript",
+          "exec": [
+            ""
+          ]
+        }
+      }
+    ],
+    "variable": [
+      {
+        "key": "board_id",
+        "value": "",
+        "type": "string",
+        "description": "ID del tablero creado"
+      },
+      {
+        "key": "task_id",
+        "value": "",
+        "type": "string",
+        "description": "ID de la tarea creada"
+      }
+    ]
+  }

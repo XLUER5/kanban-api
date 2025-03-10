@@ -148,7 +148,7 @@
               ],
               "body": {
                 "mode": "raw",
-                "raw": "{\n    \"board_id\": \"{{board_id}}\",\n    \"title\": \"Implementar API REST\",\n    \"description\": \"Crear endpoints para gestión de usuarios\",\n    \"status\": \"Por hacer\",\n    \"priority\": \"High\",\n    \"assignee\": \"Juan Pérez\",\n    \"tags\": [\"backend\", \"api\"],\n    \"due_date\": \"2023-12-15T00:00:00\"\n}"
+                "raw": "{\n    \"board_id\": \"{{board_id}}\",\n    \"title\": \"Implementar API REST\",\n    \"description\": \"Crear endpoints para gestión de usuarios\",\n    \"status\": \"Por hacer\",\n    \"priority\": \"High\",\n    \"assignee\": \"Luis Carlos Estrada\",\n    \"tags\": [\"backend\", \"api\"],\n    \"due_date\": \"2025-03-19T00:00:00\"\n}"
               },
               "url": {
                 "raw": "http://localhost:8000/tasks",
